@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class DecoderTest2 {
+class DecoderTest {
 
     @Test
     public void decode1() {
