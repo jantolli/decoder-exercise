@@ -1,4 +1,4 @@
-package main.java.upwork.exercise;
+package upwork.exercise;
 
 import java.util.Arrays;
 import java.util.List;

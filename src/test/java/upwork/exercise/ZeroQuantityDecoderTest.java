@@ -1,9 +1,9 @@
-package test.java.upwork.exercise;
+package upwork.exercise;
 
-import main.java.upwork.exercise.ZeroQuantityDecoder;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
+
 
 public class ZeroQuantityDecoderTest {
 
@@ -17,9 +17,16 @@ public class ZeroQuantityDecoderTest {
         assertEquals("8888774", getFullyDecodedString("482714"));
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test()
     public void decodeNull() {
-        getFullyDecodedString(null);
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            getFullyDecodedString(null);
+        });
+
+        String expectedMessage = "digits cannot be null";
+        String actualMessage = exception.getMessage();
+
+        assertTrue(actualMessage.contains(expectedMessage));
     }
 
     @Test
@@ -44,7 +51,7 @@ public class ZeroQuantityDecoderTest {
 
     private String getFullyDecodedString(String stringToDecode) {
         StringBuilder decodedString = new StringBuilder();
-        ZeroQuantityDecoder decoder = new ZeroQuantityDecoder(stringToDecode);
+        upwork.exercise.ZeroQuantityDecoder decoder = new upwork.exercise.ZeroQuantityDecoder(stringToDecode);
         while (decoder.hasNext()) {
             decodedString.append(decoder.next());
         }
