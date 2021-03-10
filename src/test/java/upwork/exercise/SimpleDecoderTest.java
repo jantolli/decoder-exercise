@@ -1,9 +1,9 @@
-package test.java.upwork.exercise;
+package upwork.exercise;
 
-import main.java.upwork.exercise.SimpleDecoder;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
+
 
 public class SimpleDecoderTest {
 
@@ -17,25 +17,22 @@ public class SimpleDecoderTest {
         assertEquals("8888774", getFullyDecodedString("482714"));
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void decodeNull() {
-        getFullyDecodedString(null);
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            getFullyDecodedString(null);
+        });
+
+        String expectedMessage = "digits cannot be null";
+        String actualMessage = exception.getMessage();
+
+        assertTrue(actualMessage.contains(expectedMessage));
     }
 
     @Test
     public void decodeEmptyString() {
         assertEquals("", getFullyDecodedString(""));
     }
-
-//    @Test
-//    public void decode3() {
-//        assertEquals("999999999", getFullyDecodedString("0199"));
-//    }
-//
-//    @Test
-//    public void decode4() {
-//        assertEquals("", getFullyDecodedString("01"));
-//    }
 
     private String getFullyDecodedString(String stringToDecode) {
         StringBuilder decodedString = new StringBuilder();
